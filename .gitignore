@@ -35,3 +35,9 @@ next-env.d.ts
 /outputs/
 /work/
 .openai/
+
+# Local quiz sessions
+/.quiz-data/
+
+# TypeScript incremental build cache
+*.tsbuildinfo

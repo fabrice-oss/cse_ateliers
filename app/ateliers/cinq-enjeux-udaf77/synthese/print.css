@@ -1,0 +1,18 @@
+.enjeux-print { max-width:900px; margin:40px auto; padding:24px; color:#16342b; line-height:1.6; }
+.enjeux-print nav { display:flex; justify-content:space-between; gap:24px; flex-wrap:wrap; }
+.enjeux-print h1,.enjeux-print h2 { font-family:Georgia,serif; }
+.enjeux-print section { margin-top:48px; }
+.enjeux-print article { padding:8px 0; border-bottom:1px solid #d9e1dc; }
+.enjeux-print li { margin:12px 0; }
+@media print {
+ @page { size:A4; margin:18mm; }
+ body { background:white!important; }
+ .enjeux-print { max-width:none; margin:0; padding:0; color:black; font-size:11pt; }
+ .enjeux-print nav,.page-loader { display:none!important; }
+ .enjeux-print .print-break { break-before:page; }
+ .enjeux-print section { margin:0; }
+ .enjeux-print article { break-inside:avoid; }
+ .enjeux-print h2,.enjeux-print h3 { break-after:avoid; }
+ .enjeux-print a { text-decoration:none; }
+ .enjeux-print a::after { content:' (' attr(href) ')'; font-size:9pt; overflow-wrap:anywhere; }
+}

@@ -1,0 +1,53 @@
+.enjeux-page { min-height:100vh; }
+.enjeux-page p { line-height:1.65; }
+.enjeux-toolbar { display:flex; flex-wrap:wrap; align-items:center; gap:12px 24px; padding:18px clamp(20px,5vw,72px); border-bottom:1px solid var(--line); }
+.enjeux-page .button:not(.primary) { background:var(--soft); color:var(--ink); border:1px solid var(--line); }
+.enjeux-page button:disabled { cursor:default; opacity:.5; }
+.enjeux-page :is(button,a,input,textarea,summary):focus-visible { outline:3px solid var(--green); outline-offset:4px; }
+.enjeux-intro { padding:60px clamp(24px,7vw,110px); background:var(--green-dark); color:white; }
+.enjeux-intro .eyebrow { color:var(--lime); }
+.enjeux-intro h1 { max-width:1000px; margin:0; font:400 clamp(38px,5.5vw,70px)/1.08 Georgia,serif; letter-spacing:-.03em; }
+.enjeux-intro>p:not(.eyebrow) { max-width:850px; font-size:18px; color:#e4eee8; }
+.enjeux-modes { display:grid; grid-template-columns:1fr 1fr; gap:24px; max-width:1200px; margin:36px auto; padding:0 24px; }
+.enjeux-modes article { padding:32px; border:1px solid var(--line); background:white; border-radius:8px; }
+.enjeux-modes h2 { font:400 32px/1.15 Georgia,serif; }
+.enjeux-notice,.enjeux-resources { max-width:1152px; margin:30px auto; padding:24px; }
+.enjeux-notice { background:var(--soft); border-left:4px solid var(--green); }
+.enjeux-workspace { max-width:1152px; margin:30px auto; padding:0 24px; }
+.enjeux-progress,.enjeux-bottom { display:flex; justify-content:space-between; gap:16px; flex-wrap:wrap; }
+.enjeux-progress { color:var(--muted); font-size:14px; }
+.enjeux-nav,.enjeux-numbers { display:flex; flex-wrap:wrap; gap:8px; margin:20px 0; }
+.enjeux-nav button,.enjeux-numbers button { min-height:44px; min-width:44px; padding:10px 16px; border:1px solid var(--line); border-radius:5px; background:white; color:var(--ink); cursor:pointer; font:inherit; }
+.enjeux-page button[aria-current=step] { background:var(--ink); color:var(--lime); border-color:var(--ink); font-weight:bold; }
+.enjeux-panel { padding:clamp(24px,4vw,48px); background:white; border:1px solid var(--line); border-radius:8px; }
+.enjeux-panel h1 { margin:0; font:400 clamp(32px,4vw,48px)/1.1 Georgia,serif; scroll-margin-top:100px; }
+.enjeux-instruction { color:var(--muted); font-size:16px; }
+.enjeux-situation { font-size:clamp(23px,2.5vw,31px); line-height:1.5!important; margin:32px 0; }
+.enjeux-choices { display:flex; flex-wrap:wrap; gap:10px; padding:0; border:0; margin:24px 0; list-style:none; }
+.enjeux-choices legend { margin-bottom:12px; font-weight:bold; }
+.enjeux-choices label,.enjeux-choices li { display:flex; align-items:center; gap:9px; padding:16px; background:var(--soft); border:1px solid var(--line); border-radius:5px; font-size:18px; }
+.enjeux-choices label { cursor:pointer; }
+.enjeux-choices label:has(input:checked) { border:2px solid var(--green); padding:15px; font-weight:bold; }
+.enjeux-choices input { width:20px; height:20px; accent-color:var(--green); }
+.enjeux-justification { display:grid; gap:10px; font-weight:bold; }
+.enjeux-justification textarea { width:100%; border:1px solid var(--line); border-radius:5px; padding:14px; resize:vertical; font-weight:normal; }
+.enjeux-small { font-size:14px; color:var(--muted); }
+.enjeux-page summary { cursor:pointer; padding:12px 0; font-weight:bold; }
+.enjeux-tips { margin-bottom:24px; }
+.enjeux-scenario { padding:0 20px; background:var(--soft); }
+.enjeux-explanation { padding:22px; border-left:4px solid var(--green); background:var(--soft); margin:24px 0; font-size:18px; }
+.enjeux-explanation strong { font-size:21px; }
+.enjeux-bottom { margin-top:32px; border-top:1px solid var(--line); padding-top:24px; }
+.enjeux-review { border-top:1px solid var(--line); margin-top:24px; padding-top:16px; }
+.enjeux-review h2 { font-size:21px; }
+.enjeux-note { white-space:pre-wrap; overflow-wrap:anywhere; }
+.enjeux-conclusion { font:400 27px/1.5 Georgia,serif; }
+.enjeux-questions li { font-size:22px; line-height:1.6; padding:14px 0 14px 8px; }
+.enjeux-resources { border-top:1px solid var(--line); color:var(--muted); font-size:14px; }
+.enjeux-resources li { margin:14px 0; }
+.enjeux-resources>.button { margin-top:20px; }
+.enjeux-dialog { width:min(800px,94vw); max-height:85vh; padding:32px; border:1px solid var(--line); border-radius:8px; color:var(--ink); background:var(--paper); }
+.enjeux-dialog::backdrop { background:rgba(22,52,43,.6); }
+.enjeux-dialog-heading { display:flex; align-items:center; justify-content:space-between; gap:20px; }
+.enjeux-dialog section { border-top:1px solid var(--line); margin-top:20px; }
+@media(max-width:650px) { .enjeux-modes { grid-template-columns:1fr; } .enjeux-page .site-header { height:auto; min-height:74px; gap:20px; padding:16px; } .enjeux-page .brand { font-size:12px; } .enjeux-workspace { padding:0 12px; } .enjeux-toolbar { padding:16px; } .enjeux-dialog { padding:20px; } .enjeux-dialog-heading { align-items:start; } }

@@ -64,6 +64,24 @@ const workshops = [
     href: '/ateliers/enquete',
     accent: 'investigation',
   },
+  {
+    number: '08',
+    type: 'Atelier · UDAF 77',
+    title: 'Les cinq enjeux de la prévention — UDAF 77',
+    description: 'Distinguez les cinq enjeux de la prévention à travers dix situations, puis explorez les conséquences d’un même incident.',
+    meta: '30 à 40 min · Sur Zoom ou en individuel',
+    href: '/ateliers/cinq-enjeux-udaf77',
+    accent: 'lime',
+  },
+  {
+    number: '09',
+    type: 'Quiz collectif · SSCT',
+    title: 'Quiz 1',
+    description: 'Rejoignez la session par QR code et répondez sur votre appareil. Le formateur guide les 25 questions et révèle les explications.',
+    meta: '25 questions · QR code · Résultats du groupe',
+    href: '/ateliers/quiz-1',
+    accent: 'blue',
+  },
 ];
 
 export default function Home() {
