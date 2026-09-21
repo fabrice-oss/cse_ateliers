@@ -1,7 +1,7 @@
 import type { NextConfig } from 'next';
 
 const nextConfig: NextConfig = {
-  outputFileTracingExcludes: { '/api/quiz-1/**': ['./.quiz-data/**/*'] },
+  outputFileTracingExcludes: { '/api/quiz-*/**': ['./.quiz-data/**/*'] },
 };
 
 export default nextConfig;

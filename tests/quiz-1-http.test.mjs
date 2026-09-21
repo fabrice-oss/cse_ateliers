@@ -1,5 +1,6 @@
 import assert from 'node:assert/strict';
 import { test } from 'node:test';
+const quiz = process.env.QUIZ_TEST_NUMBER === '2' ? 'quiz-2' : 'quiz-1';
 const base = process.env.QUIZ_TEST_URL || 'http://127.0.0.1:3000';
 function browser() {
   const cookies = new Map();
@@ -10,7 +11,10 @@ function browser() {
   };
 }
 test('API complète : 12 participants concurrents, isolation, reprise, révocation et export', async()=>{
-  const host=browser();let r=await host('/api/quiz-1/sessions','POST',{key:process.env.QUIZ_HOST_KEY||''}); assert.equal(r.status,201,await r.clone().text());const {code}=await r.json();const url=`/api/quiz-1/sessions/${code}`;
+  const host=browser();let r=await host(`/api/${quiz}/sessions`,'POST',{key:process.env.QUIZ_HOST_KEY||''}); assert.equal(r.status,201,await r.clone().text());const {code}=await r.json();const url=`/api/${quiz}/sessions/${code}`;
+  const other = quiz === 'quiz-1' ? 'quiz-2' : 'quiz-1';
+  assert.equal((await host(`/api/${other}/sessions/${code}?role=host`)).status,404);
+  assert.equal((await host(`/api/${other}/sessions/${code}`, 'POST', {action:'join'})).status,404);
   try {
     const users=Array.from({length:12},browser);
     await Promise.all(users.map(async u=>assert.equal((await u(url,'POST',{action:'join'})).status,200)));
@@ -30,8 +34,8 @@ test('API complète : 12 participants concurrents, isolation, reprise, révocati
     assert.equal((await users[0](url+'?export=1')).status,403);
     assert.equal((await host(url,'POST',{action:'reveal',current:0,phase:'closed'})).status,200);
     view=await(await host(url+'?role=host')).json();assert.deepEqual(view.counts,[2,3,4,3]);assert.equal(view.correction.correct,1);
-    const qr=await host(`/api/quiz-1/qr?code=${code}`);assert.equal(qr.status,200);assert.match(await qr.text(),/<svg/);
-    assert.equal((await users[0](`/api/quiz-1/qr?code=${code}`)).status,403);
+    const qr=await host(`/api/${quiz}/qr?code=${code}`);assert.equal(qr.status,200);assert.match(await qr.text(),/<svg/);
+    assert.equal((await users[0](`/api/${quiz}/qr?code=${code}`)).status,403);
     assert.equal((await host(url,'POST',{action:'finish',current:0,phase:'revealed'})).status,200);
     view=await(await users[1](url)).json();assert.equal(view.results.length,1);assert.equal(view.score,1);
     const csv=await host(url+'?role=host&export=1');assert.equal(csv.status,200);assert.match(await csv.text(),/Bonne réponse/);

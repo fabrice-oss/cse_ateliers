@@ -50,19 +50,20 @@ export async function store(): Promise<Store> {
   if (Date.now() - (cache.quizPrunedAt || 0) > 60_000) { await db.prune(); cache.quizPrunedAt = Date.now(); }
   return db;
 }
-export async function readSession(code: string) {
+export async function readSession(code: string, quizId: 'quiz-1' | 'quiz-2' = 'quiz-1') {
   if (!/^\d{6}$/.test(code)) throw new QuizError(400, 'Le code de session contient six chiffres.');
   const row = await (await store()).get(code);
   if (!row || row.data.expiresAt <= Date.now()) throw new QuizError(404, 'Cette session est introuvable ou a expiré. Vérifiez le code auprès du formateur.');
+  if ((row.data.quizId || 'quiz-1') !== quizId) throw new QuizError(404, 'Ce code appartient à un autre quiz. Ouvrez le quiz indiqué par le formateur.');
   if (row.data.version !== 1) throw new QuizError(409, 'Cette session appartient à une ancienne version du quiz. Créez une nouvelle session.');
   return row;
 }
 // Compare-and-swap protects answers against concurrent submissions and host transitions,
 // including when requests run on different serverless instances.
-export async function mutateSession(code: string, change: (session: Session) => void): Promise<RecordRow> {
+export async function mutateSession(code: string, change: (session: Session) => void, quizId: 'quiz-1' | 'quiz-2' = 'quiz-1'): Promise<RecordRow> {
   const db = await store();
   for (let attempt = 0; attempt < 40; attempt++) {
-    const row = await readSession(code);
+    const row = await readSession(code, quizId);
     change(row.data);
     if (await db.replace(code, row.revision, row.data)) return { revision: row.revision + 1, data: row.data };
     await new Promise(resolve => setTimeout(resolve, Math.min(100, 5 * attempt) + Math.random() * 20));

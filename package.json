@@ -7,7 +7,7 @@
     "build": "next build",
     "start": "next start",
     "lint": "eslint . --ignore-pattern dist --ignore-pattern .next",
-    "test:quiz": "node --import tsx --test tests/quiz-1.test.ts",
+    "test:quiz": "node --import tsx --test tests/quiz-1.test.ts tests/quiz-2.test.ts",
     "test:quiz:http": "node --experimental-strip-types --test tests/quiz-1-http.test.mjs",
     "quiz:setup-db": "node scripts/setup-quiz-db.mjs"
   },

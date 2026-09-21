@@ -82,6 +82,15 @@ const workshops = [
     href: '/ateliers/quiz-1',
     accent: 'blue',
   },
+  {
+    number: '10',
+    type: 'Quiz collectif · SSCT',
+    title: 'Quiz 2',
+    description: 'Mandat, missions, consultations, expertises et CSSCT : révisez la suite du support en répondant sur votre appareil.',
+    meta: '30 questions · Diapositives 101 à 226 · QR code',
+    href: '/ateliers/quiz-2',
+    accent: 'lime',
+  },
 ];
 
 export default function Home() {

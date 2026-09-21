@@ -5,7 +5,7 @@ export type Correction = { correct: number; explanation: string; slides: string;
 export type Question = PublicQuestion & Correction;
 export type Participant = { joinedAt: number; answers: Record<string, number> };
 export type Session = {
-  version: 1; code: string; hostHash: string; createdAt: number; expiresAt: number;
+  version: 1; quizId?: 'quiz-1' | 'quiz-2'; code: string; hostHash: string; createdAt: number; expiresAt: number;
   phase: Phase; current: number; revealed: number[]; participants: Record<string, Participant>;
 };
 export type RecordRow = { revision: number; data: Session };
