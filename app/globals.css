@@ -879,6 +879,20 @@ input:focus,textarea:focus { border-color:var(--green); box-shadow:0 0 0 3px rgb
 }
 
 /* Atelier « Consultations obligatoires UDAF 77 » — moteur générique en 5 étapes */
+/* Nav dédiée (.duerp-steps est réutilisée et resurchargée par plusieurs ateliers dans ce
+   fichier ; .udaf-steps, placée en fin de feuille, gagne systématiquement le cascade et reste
+   correcte quel que soit l'ordre des autres blocs). */
+.udaf-steps { grid-template-columns:repeat(5,minmax(110px,185px)) 1fr; }
+@media (max-width:1100px) {
+  .udaf-steps { grid-template-columns:repeat(5,minmax(90px,1fr)); }
+  .udaf-steps>p { display:none; }
+}
+@media (max-width:620px) {
+  .udaf-steps { grid-template-columns:repeat(5,1fr); padding:0; }
+  .udaf-steps button { justify-content:center; min-width:0; padding:10px 4px; }
+  .udaf-steps button>span { display:none; }
+  .udaf-steps button>strong { font-size:9px; line-height:1.2; }
+}
 .workshop-cards.three-cards { grid-template-columns:repeat(3,minmax(0,1fr)); }
 .workshop-card.soon { cursor:default; opacity:.62; }
 .workshop-card.soon:hover { transform:none; box-shadow:none; border-color:var(--line); }

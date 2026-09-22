@@ -233,7 +233,7 @@ export default function ConsultationWizard({ scenario }: { scenario: Consultatio
         </aside>
       </section>
 
-      <nav className="duerp-steps" aria-label="Étapes de la consultation">
+      <nav className="duerp-steps udaf-steps" aria-label="Étapes de la consultation">
         {stepLabels.map(([number, label]) => (
           <button type="button" key={number} className={step === number ? 'active' : step > number ? 'done' : ''} onClick={() => goTo(number)}>
             <span>{number}</span><strong>{label}</strong>
