@@ -7,6 +7,7 @@ import { consultationLegalRules, categoryLabel } from './udaf77-legal-rules';
 type WizardStep = 1 | 2 | 3 | 4 | 5;
 type QuestionField = 'missingInfo' | 'clarifications' | 'pointsToVerify';
 type Questions = Record<QuestionField, string[]>;
+type QuestionInputs = Record<QuestionField, string>;
 type ExpertiseChoice = 'oui' | 'non' | '';
 type Opinion = 'favorable' | 'defavorable' | '';
 type AvisForm = {
@@ -26,6 +27,7 @@ const questionFieldMeta: { field: QuestionField; label: string; placeholder: str
 ];
 
 const emptyQuestions: Questions = { missingInfo: [], clarifications: [], pointsToVerify: [] };
+const emptyQuestionInputs: QuestionInputs = { missingInfo: '', clarifications: '', pointsToVerify: '' };
 const emptyAvis: AvisForm = { association: '', meetingDate: '', electedMembers: '', opinion: '', motivation: '', reservations: '', followUp: '' };
 
 const storageKey = (scenarioId: string) => `cse-udaf77-consultation-${scenarioId}`;
@@ -35,7 +37,7 @@ export default function ConsultationWizard({ scenario }: { scenario: Consultatio
   const [step, setStep] = useState<WizardStep>(1);
   const [hasRead, setHasRead] = useState(false);
   const [questions, setQuestions] = useState<Questions>(emptyQuestions);
-  const [questionInputs, setQuestionInputs] = useState<Questions>(emptyQuestions);
+  const [questionInputs, setQuestionInputs] = useState<QuestionInputs>(emptyQuestionInputs);
   const [expertise, setExpertise] = useState<ExpertiseChoice>('');
   const [avis, setAvis] = useState<AvisForm>({ ...emptyAvis, association: scenario.structureFictive.nom });
   const [submitted, setSubmitted] = useState(false);
