@@ -25,26 +25,22 @@ export default function Udaf77Page() {
           {udaf77Scenarios.map((scenario, index) => {
             const rule = consultationLegalRules[scenario.subtype];
             const badgeClass = rule.category === 'recurrente' ? 'recurrente' : 'ponctuelle';
-            const cardContent = (
-              <>
+            const shortTitle = scenario.title.replace(/^Consultation CSE — /, '');
+            return (
+              <a className="workshop-card lime" href={`/ateliers/udaf-77/${scenario.slug}`} key={scenario.id}>
                 <div className="workshop-card-top">
                   <span className="workshop-number">0{index + 1}</span>
-                  <span className={`udaf-badge ${scenario.disponible ? badgeClass : 'soon'}`}>{scenario.disponible ? categoryLabel[rule.category] : 'Bientôt disponible'}</span>
+                  <span className={`udaf-badge ${badgeClass}`}>{categoryLabel[rule.category]}</span>
                 </div>
                 <div className="workshop-card-body">
-                  <h3>{rule.label}</h3>
-                  <p>{scenario.disponible ? scenario.accroche : 'Ce scénario sera complété prochainement. Le moteur des cinq étapes reste identique.'}</p>
+                  <h3>{shortTitle}</h3>
+                  <p>{scenario.accroche}</p>
                 </div>
                 <div className="workshop-card-footer">
-                  <span>{scenario.disponible ? 'Cas fictif · Disponible' : 'Cas fictif · Bientôt'}</span>
-                  <strong aria-hidden="true">{scenario.disponible ? '→' : '·'}</strong>
+                  <span>Cas fictif · Disponible</span>
+                  <strong aria-hidden="true">→</strong>
                 </div>
-              </>
-            );
-            return scenario.disponible ? (
-              <a className="workshop-card lime" href={`/ateliers/udaf-77/${scenario.slug}`} key={scenario.id}>{cardContent}</a>
-            ) : (
-              <div className="workshop-card soon" aria-disabled="true" key={scenario.id}>{cardContent}</div>
+              </a>
             );
           })}
         </div>
