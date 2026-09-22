@@ -877,3 +877,79 @@ input:focus,textarea:focus { border-color:var(--green); box-shadow:0 0 0 3px rgb
   .training-row,.investigation-inline-add { grid-template-columns:1fr; }
   .investigation-proposal { align-items:stretch; flex-direction:column; }
 }
+
+/* Atelier « Consultations obligatoires UDAF 77 » — moteur générique en 5 étapes */
+.workshop-cards.three-cards { grid-template-columns:repeat(3,minmax(0,1fr)); }
+.workshop-card.soon { cursor:default; opacity:.62; }
+.workshop-card.soon:hover { transform:none; box-shadow:none; border-color:var(--line); }
+.udaf-badge { display:inline-flex; align-items:center; gap:7px; padding:7px 11px; border-radius:99px; font-size:10px; font-weight:800; letter-spacing:.06em; text-transform:uppercase; }
+.udaf-badge.recurrente { background:var(--soft); color:var(--green); }
+.udaf-badge.ponctuelle { background:#f6e5cc; color:#8a5a12; }
+.udaf-badge.soon { background:var(--line); color:var(--muted); }
+
+.udaf-chiffres-grid { display:grid; grid-template-columns:repeat(4,1fr); border-top:1px solid var(--line); border-left:1px solid var(--line); }
+.udaf-chiffres-grid div { padding:20px; border-right:1px solid var(--line); border-bottom:1px solid var(--line); }
+.udaf-chiffres-grid span { display:block; color:var(--muted); font-size:11px; text-transform:uppercase; letter-spacing:.08em; }
+.udaf-chiffres-grid strong { display:block; margin-top:8px; font-size:17px; }
+
+.udaf-accordion { display:grid; gap:12px; }
+.udaf-accordion details { padding:0; border:1px solid var(--line); border-radius:7px; background:white; overflow:hidden; }
+.udaf-accordion summary { padding:20px 24px; font-family:Georgia,serif; font-size:19px; font-weight:400; cursor:pointer; list-style:none; }
+.udaf-accordion summary::-webkit-details-marker { display:none; }
+.udaf-accordion summary::before { content:'+'; display:inline-block; width:20px; color:var(--green); font-weight:800; }
+.udaf-accordion details[open] summary::before { content:'−'; }
+.udaf-accordion details>div { padding:0 24px 22px 44px; color:#40534c; line-height:1.7; }
+.udaf-accordion details>div p { margin:0 0 10px; }
+
+.udaf-question-grid-cards { display:grid; grid-template-columns:repeat(3,1fr); border-top:1px solid var(--line); border-left:1px solid var(--line); }
+
+.udaf-question-panel { display:grid; grid-template-columns:repeat(3,1fr); gap:16px; }
+.udaf-question-entry { display:flex; gap:10px; margin-bottom:14px; }
+.udaf-question-entry input { flex:1; }
+.udaf-question-list { display:grid; gap:8px; margin:0; padding:0; list-style:none; }
+.udaf-question-list li { display:flex; align-items:start; justify-content:space-between; gap:10px; padding:10px 12px; border-radius:5px; background:var(--soft); font-size:13px; line-height:1.5; }
+.udaf-question-list li.empty { background:transparent; color:var(--muted); padding:0; }
+.udaf-question-list li button { flex:0 0 auto; border:0; background:transparent; color:var(--muted); font-size:16px; cursor:pointer; }
+.udaf-question-list.readonly li { background:white; border:1px solid var(--line); }
+
+.udaf-expert-recap { display:grid; grid-template-columns:repeat(2,1fr); gap:18px; }
+.udaf-expert-recap div { padding:24px; border:1px solid var(--line); border-radius:8px; background:white; }
+.udaf-expert-recap span { display:block; color:var(--muted); font-size:11px; text-transform:uppercase; letter-spacing:.08em; }
+.udaf-expert-recap strong { display:block; margin:8px 0 10px; font-family:Georgia,serif; font-size:22px; font-weight:400; }
+.udaf-expert-recap small { color:var(--muted); font-size:12px; }
+
+.udaf-presentation { min-height:100vh; display:flex; flex-direction:column; background:#0d251f; color:white; }
+.udaf-presentation-bar { display:flex; align-items:center; justify-content:space-between; padding:20px clamp(20px,5vw,60px); border-bottom:1px solid rgba(255,255,255,.12); font-size:13px; font-weight:700; }
+.udaf-presentation-bar button { padding:10px 16px; border:1px solid rgba(255,255,255,.3); border-radius:5px; background:transparent; color:white; font-size:13px; font-weight:700; cursor:pointer; }
+.udaf-presentation-body { flex:1; display:grid; gap:clamp(30px,5vw,56px); padding:clamp(30px,6vw,72px) clamp(20px,6vw,80px); overflow-y:auto; }
+.udaf-presentation-body .eyebrow { color:var(--lime); }
+.udaf-presentation-body h1 { margin:6px 0 24px; font-family:Georgia,serif; font-size:clamp(34px,5vw,54px); font-weight:400; line-height:1.05; }
+.udaf-presentation-body h2 { margin:0 0 16px; font-family:Georgia,serif; font-size:clamp(24px,3vw,32px); font-weight:400; }
+.udaf-presentation-body p { font-size:clamp(16px,2vw,20px); line-height:1.6; color:#dbe8e3; }
+.udaf-presentation-grid { display:grid; grid-template-columns:repeat(4,1fr); gap:16px; }
+.udaf-presentation-grid div { padding:18px; border:1px solid rgba(255,255,255,.18); border-radius:8px; }
+.udaf-presentation-grid span { display:block; color:#9fb8b0; font-size:11px; text-transform:uppercase; letter-spacing:.08em; }
+.udaf-presentation-grid strong { display:block; margin-top:8px; font-size:clamp(18px,2.2vw,24px); font-weight:700; }
+.udaf-presentation-list { display:grid; gap:12px; margin:0; padding:0; list-style:none; font-size:clamp(16px,2vw,20px); }
+.udaf-presentation-list li { padding:14px 18px; border-left:4px solid var(--lime); background:rgba(255,255,255,.06); }
+.udaf-presentation-opinion { font-family:Georgia,serif; font-size:clamp(26px,3.5vw,36px); font-weight:400; }
+.udaf-presentation-opinion.favorable { color:#9fe3c4; }
+.udaf-presentation-opinion.defavorable { color:#f2a89b; }
+.udaf-presentation-actions { padding:24px clamp(20px,6vw,80px) clamp(24px,5vw,50px); border-top:1px solid rgba(255,255,255,.12); }
+
+@media (max-width:1100px) {
+  .udaf-chiffres-grid { grid-template-columns:repeat(2,1fr); }
+  .udaf-question-grid-cards { grid-template-columns:repeat(2,1fr); }
+}
+@media (max-width:850px) {
+  .udaf-question-panel { grid-template-columns:1fr; }
+  .udaf-expert-recap { grid-template-columns:1fr; }
+  .udaf-presentation-grid { grid-template-columns:repeat(2,1fr); }
+}
+@media (max-width:620px) {
+  .udaf-chiffres-grid { grid-template-columns:1fr; }
+  .udaf-question-grid-cards { grid-template-columns:1fr; }
+  .udaf-question-entry { flex-direction:column; }
+  .udaf-presentation-grid { grid-template-columns:1fr; }
+  .udaf-presentation-bar { flex-direction:column; align-items:start; gap:12px; }
+}

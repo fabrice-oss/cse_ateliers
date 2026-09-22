@@ -91,6 +91,15 @@ const workshops = [
     href: '/ateliers/quiz-2',
     accent: 'lime',
   },
+  {
+    number: '11',
+    type: 'Atelier guidé · UDAF 77',
+    title: 'Consultation UDAF 77',
+    description: 'Lisez la note d’information, notez vos questions, décidez d’un recours à l’expert, puis rendez un avis motivé sur l’une des six consultations obligatoires.',
+    meta: '6 scénarios · 5 étapes · Mode présentation · PDF',
+    href: '/ateliers/udaf-77',
+    accent: 'blue',
+  },
 ];
 
 export default function Home() {
